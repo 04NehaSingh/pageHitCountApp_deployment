@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: n2
+  name: redis-server
+  labels:
+    name: redis-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: redis-server
+  template:
+    metadata:
+      labels:
+        name: redis-server
+    spec:
+      containers:
+      - name: redis-server
+        image: redis
+        ports:
+        - containerPort: 8081
